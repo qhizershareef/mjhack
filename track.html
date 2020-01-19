@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <button id="butt" onclick="getLocation()">Get LatLon</button>
+<script>
+      var x = document.getElementById("demo");
+      var message=window.prompt('Enter Category for help:\n1.Food \n2.Education \n3.Others specify');
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+        let l=position.coords.latitude;
+        let L=position.coords.longitude;
+        if(l!=null && L!=null){
+              pass(l,L,message);  
+        }
+      }
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCnJE-XURY9b3EMzlndhrbO5tKaZdfoXZ4",
+    authDomain: "hackathon-project-085.firebaseapp.com",
+    databaseURL: "https://hackathon-project-085.firebaseio.com",
+    projectId: "hackathon-project-085",
+    storageBucket: "hackathon-project-085.appspot.com",
+    messagingSenderId: "9562477542",
+    appId: "1:9562477542:web:d6ca271b92f209b129bc27",
+    measurementId: "G-HKC6YB63BM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  firebase.analytics();
+</script>
+<script src="app.js"></script>
+</body>
+
+</html>		
+<style>
+    body{
+        background-color:rgb(72, 150, 240);
+    }
+#butt{
+    position:relative;
+    left:800px;
+    top:400px;
+    padding:10px 50px;
+
+}
+</style>	 
